@@ -34,7 +34,7 @@ abind (and it assumes data.table + ggplot2 are already loaded by the main script
 
 # Input
 
-The script assumes you are using an rds files. Check "training_dataset_example.csv", "abiotics_cop_keskmised_example.csv" and "bs1km_vs_cop_example.csv" for examples for the table structures
+The script assumes you are using rds files. Check "training_dataset_example.csv", "abiotics_cop_keskmised_example.csv" and "bs1km_vs_cop_example.csv" for examples for the table structures
 
 Training dataset
 -
