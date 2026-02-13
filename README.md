@@ -13,7 +13,8 @@ R
 
 # Output
 
-Tables (CSV):
+Tables (CSV)
+-
 - liigid_rruut.csv
   Per-species “R²-like” fit metric on training predictions:
   - For "esinemine": Tjur R² (abi$TjurR2)
@@ -27,7 +28,8 @@ Tables (CSV):
 - R2_testandmetel_yksik.csv (only if testime=TRUE and yheliigimudelid=TRUE)
 Same as above but for single-species models.
 
-Plots (PDF):
+Plots (PDF)
+-
 - variance_partioning.pdf
 Barplots per species: variance partitioning across covariate groups and the spatial random effect.
 - liik_ja_keskkond.pdf
@@ -45,4 +47,7 @@ Species association heatmap (correlation of residuals / random-effect level asso
 
 Spatial rasters (GeoTIFF):
 - 
-s
+For each species name in the prediction output matrix:
+
+- <species_name>.tif
+Raster in EPSG:3035 created from predicted values over the 1 km grid. Values are clamped with pmax(pred,0) before rasterisation.
