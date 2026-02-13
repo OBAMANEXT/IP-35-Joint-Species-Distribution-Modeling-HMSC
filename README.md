@@ -13,15 +13,23 @@ Required R packages
 Loaded in hmsc_script.R:
 
 data.table
+
 Hmsc
+
 terra
+
 corrplot
+
 abind
+
 ggplot2
+
 pROC
+
 Hmisc
 
 Loaded in hmsc_abikoodid.r:
+
 abind (and it assumes data.table + ggplot2 are already loaded by the main script when sourced)
 
 # Input
@@ -76,8 +84,11 @@ Raster in EPSG:3035 created from predicted values over the 1 km grid. Values are
 Folder layout
 -
 Place in one working directory:
+
 hmsc_script.R
+
 hmsc_abikoodid.R (match filename case to what source() uses)
+
 the required .rds files
 
 Step-by-step run
