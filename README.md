@@ -34,7 +34,36 @@ abind (and it assumes data.table + ggplot2 are already loaded by the main script
 
 # Input
 
+Training dataset
+-
+Loaded into sisendandmed and converted to data.table
 
+sisendandmed=readRDS("QuantitativeSamplesBiomassesKeySpeciesWithCopernicusDataAndDepthAndMoreHistory.rds")
+
+The script assumes you are using an rds file. Check "training_dataset_example.csv" for an example of table structure.
+
+Important
+-
+Species and covariates are selected by hard-coded column positions like:
+
+liigid=names(sisendandmed)[c(23,28,34,35,...)]
+keskkond2=names(sisendandmed)[c(11,128,132,...)]
+logtunnused=names(sisendandmed)[c(11)]
+
+Prediction datasets
+-
+abiotics_cop_keskmised.rds: abiotic covariates for the prediction grid; later merged with a mapping table.
+
+andmedvalja=readRDS("abiotics_cop_keskmised.rds")
+
+The script assumes you are using an rds file. Check "abiotics_cop_keskmised_example.csv" for an example table structure.
+
+
+bs1km_vs_cop.rds: mapping table providing grid coordinates and IDs
+
+abibs=readRDS("bs1km_vs_cop.rds")
+
+The script assumes you are using an rds file. Check "bs1km_vs_cop_example.csv" for an example table structure.
 
 # Output
 
