@@ -4,4 +4,8 @@ This product is built on the Hierarchical Modelling of Species Communities (HMSC
 
 # Prerequisites
 
-...
+Software:
+R
+
+Required R packages:
+
