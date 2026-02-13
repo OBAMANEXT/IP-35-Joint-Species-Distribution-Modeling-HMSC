@@ -56,7 +56,9 @@ Prediction datasets
 -
 abiotics_cop_keskmised.rds: abiotic covariates for the prediction grid; later merged with a mapping table.
 
+
 andmedvalja=readRDS("abiotics_cop_keskmised.rds")
+
 
 The script assumes you are using an rds file. Check "abiotics_cop_keskmised_example.csv" for an example table structure.
 
@@ -64,6 +66,7 @@ The script assumes you are using an rds file. Check "abiotics_cop_keskmised_exam
 bs1km_vs_cop.rds: mapping table providing grid coordinates and IDs
 
 abibs=readRDS("bs1km_vs_cop.rds")
+
 
 The script assumes you are using an rds file. Check "bs1km_vs_cop_example.csv" for an example table structure.
 
