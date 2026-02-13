@@ -34,13 +34,16 @@ abind (and it assumes data.table + ggplot2 are already loaded by the main script
 
 # Input
 
+The script assumes you are using an rds files. Check "training_dataset_example.csv", "abiotics_cop_keskmised_example.csv" and "bs1km_vs_cop_example.csv" for examples for the table structures
+
 Training dataset
 -
+
+
 Loaded into sisendandmed and converted to data.table
 
 sisendandmed=readRDS("QuantitativeSamplesBiomassesKeySpeciesWithCopernicusDataAndDepthAndMoreHistory.rds")
 
-The script assumes you are using an rds file. Check "training_dataset_example.csv" for an example of table structure.
 
 Important
 -
@@ -56,11 +59,8 @@ Prediction datasets
 -
 abiotics_cop_keskmised.rds: abiotic covariates for the prediction grid; later merged with a mapping table.
 
-
 andmedvalja=readRDS("abiotics_cop_keskmised.rds")
 
-
-The script assumes you are using an rds file. Check "abiotics_cop_keskmised_example.csv" for an example table structure.
 
 
 bs1km_vs_cop.rds: mapping table providing grid coordinates and IDs
@@ -68,7 +68,6 @@ bs1km_vs_cop.rds: mapping table providing grid coordinates and IDs
 abibs=readRDS("bs1km_vs_cop.rds")
 
 
-The script assumes you are using an rds file. Check "bs1km_vs_cop_example.csv" for an example table structure.
 
 # Output
 
@@ -113,6 +112,8 @@ Raster in EPSG:3035 created from predicted values over the 1 km grid. Values are
 
 # Methodology
 
+This R script builds a spatial joint species distribution model (JSDM) for benthic species using Hmsc: it loads an RDS dataset, selects target species columns and environmental covariates, filters by year, bins samples into 20 depth classes and does stratified random train/test splitting within each depth bin (with extra downsampling of the shallowest bins to manage imbalance), jitters coordinates slightly to avoid duplicated locations, and optionally log-transforms chosen predictors; it then constructs the response matrix Y as either presence/absence (thresholding biomass > 0), raw biomass, or log(biomass+1), creates predictor data XData and a model formula that can include quadratic (poly(...,2)) terms, and fits an Hmsc model with a spatial random effect implemented via a Gaussian Predictive Process (GPP) using a set of knots (dimension-reduction for spatial autocorrelation), estimating parameters by MCMC sampling (multiple chains/parallel); after fitting it computes variance partitioning, posterior “significant” species–environment effects (Beta support), residual species–species association matrices (Omega correlations), and in-sample fit metrics (R² or Tjur R²), then evaluates out-of-sample performance on the held-out test set by predicting expected values and summarizing metrics (e.g., Tjur-style separation, absolute error, AUC via ROC, calibration-by-bins, and a precision term), optionally repeats the whole workflow as single-species models for comparison, produces gradient-response plots for marginal effects, and finally generates spatial predictions over a gridded abiotic dataset in chunks (to control memory/time) and writes each species’ prediction surface to GeoTIFF rasters.
+
 # Usage instructions
 
 Folder layout
@@ -121,7 +122,7 @@ Place in one working directory:
 
 hmsc_script.R
 
-hmsc_abikoodid.R (match filename case to what source() uses)
+hmsc_abikoodid.R 
 
 the required .rds files
 
