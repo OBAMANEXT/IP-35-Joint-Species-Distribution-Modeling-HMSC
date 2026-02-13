@@ -11,7 +11,7 @@ R
 Required R packages
 -
 Loaded in hmsc_script.R:
-data.table
+- data.table
 Hmsc
 terra
 corrplot
