@@ -47,7 +47,9 @@ Important
 Species and covariates are selected by hard-coded column positions like:
 
 liigid=names(sisendandmed)[c(23,28,34,35,...)]
+
 keskkond2=names(sisendandmed)[c(11,128,132,...)]
+
 logtunnused=names(sisendandmed)[c(11)]
 
 Prediction datasets
