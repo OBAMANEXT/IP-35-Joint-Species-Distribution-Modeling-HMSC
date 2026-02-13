@@ -44,10 +44,12 @@ Loaded into sisendandmed and converted to data.table
 
 sisendandmed=readRDS("QuantitativeSamplesBiomassesKeySpeciesWithCopernicusDataAndDepthAndMoreHistory.rds")
 
+Contains abiotic environmental variables and species observations, currently presence and absence data, but can also include cover or biomass.
+
 
 Important
 -
-Species and covariates are selected by hard-coded column positions like:
+Species dependent variables and environmental covariates independent variables are selected by hard coded column positions (liigid = species, keskkond2 = environmental covariates, logtunnused = variables that need to be log transformed first):
 
 liigid=names(sisendandmed)[c(23,28,34,35,...)]
 
@@ -57,7 +59,7 @@ logtunnused=names(sisendandmed)[c(11)]
 
 Prediction datasets
 -
-abiotics_cop_keskmised.rds: abiotic covariates for the prediction grid; later merged with a mapping table.
+abiotics_cop_keskmised.rds: abiotic covariates for the prediction grid (cop = native Copernicus product grid, bs1km = our own 1 km resolution Baltic Sea grid); later merged with a mapping table.
 
 andmedvalja=readRDS("abiotics_cop_keskmised.rds")
 
