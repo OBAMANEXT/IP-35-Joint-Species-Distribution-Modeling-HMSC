@@ -102,7 +102,7 @@ Step-by-step run
 - sisendandmed=readRDS("...") to the correct training RDS filename
 - the “KASUTAJA SISENDI” block: species (liigid), covariates (keskkond, keskkond2), years, bounding box, response type, etc.
 
-3. Run the script from a clean R session.'
+3. Run the script from a clean R session.
 
 4. Review outputs in the working directory (PDFs, CSVs, GeoTIFFs, and tooseis.RData).
 
