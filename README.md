@@ -4,8 +4,24 @@ This product is built on the Hierarchical Modelling of Species Communities (HMSC
 
 # Prerequisites
 
-Software:
+Software
+-
 R
+
+Required R packages
+-
+Loaded in hmsc_script.R:
+data.table
+Hmsc
+terra
+corrplot
+abind
+ggplot2
+pROC
+Hmisc
+
+Loaded in hmsc_abikoodid.r:
+abind (and it assumes data.table + ggplot2 are already loaded by the main script when sourced)
 
 # Input
 
@@ -51,3 +67,34 @@ For each species name in the prediction output matrix:
 
 - <species_name>.tif
 Raster in EPSG:3035 created from predicted values over the 1 km grid. Values are clamped with pmax(pred,0) before rasterisation.
+
+# Methodology
+
+# Usage instructions
+
+Folder layout
+-
+Place in one working directory:
+hmsc_script.R
+hmsc_abikoodid.R (match filename case to what source() uses)
+the required .rds files
+
+Step-by-step run
+-
+
+1. Install required packages (once):
+   install.packages(c("data.table","Hmsc","terra","corrplot","abind","ggplot2","pROC","Hmisc"))
+
+2. Open hmsc_script.R and update:
+- setwd("...") to your directory
+- sisendandmed=readRDS("...") to the correct training RDS filename
+- the “KASUTAJA SISENDI” block: species (liigid), covariates (keskkond, keskkond2), years, bounding box, response type, etc.
+
+3. Run the script from a clean R session.'
+
+4. Review outputs in the working directory (PDFs, CSVs, GeoTIFFs, and tooseis.RData).
+
+
+
+
+
